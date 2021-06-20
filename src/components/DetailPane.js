@@ -3,7 +3,7 @@ import React from 'react'
 import { css, jsx } from '@emotion/react'
 import Icon from './Icon'
 
-const DetailPane = ({ category = true }) =>
+const DetailPane = ({ category, pos , setActive }) =>
   category && (
     <div
       css={css`
@@ -13,6 +13,7 @@ const DetailPane = ({ category = true }) =>
         position: absolute;
         border: 2px solid white;
         z-index: 99;
+        top:${pos + scrollY}px;
         .Icon {
           font-size: 32px;
           color: white;
@@ -23,7 +24,7 @@ const DetailPane = ({ category = true }) =>
         }
       `}
     >
-
+    <Icon type='times' onClick={setActive} />
     </div>
   )
 

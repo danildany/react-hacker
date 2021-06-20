@@ -6,13 +6,23 @@ import ContentRow from './ContentRow';
 import Footer from './Footer';
 import DetailPane from './DetailPane';
 
+const InitialRow = {
+  category:"",
+  pos : {
+    top: 0,
+    bottom: 0,
+  }
+}
+
+
 /**
  * @function App
  */
 const App = () => {
-  const [activeRow,setActiveRow] = useState(null);
+  const [activeRow,setActiveRow] = useState(InitialRow);
+  const {category,pos:{top,bottom}} = activeRow;
   const setActive = activeRow => {
-    console.log(activeRow);
+    setActiveRow(activeRow);
   }
 
   return(
@@ -21,7 +31,7 @@ const App = () => {
     <Navbar />
     <Jumbotron />
     <ContentRow category='Latest Releases' setActive={setActive} />
-    <DetailPane />
+    <DetailPane category={category} pos={bottom} setActive={setActive}/>
     <Footer />
   </>
   )
@@ -39,6 +49,7 @@ const GlobalCSS = css`
     margin: 0;
     height: 100%;
     width: 100%;
+    background-color: black;
   }
   a {
     text-decoration: none;
